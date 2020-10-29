@@ -21,15 +21,15 @@ public class ApplicationManager {
 
   public void init() {
 
-    if(browser == BrowserType.CHROME){
+    if(browser.equals(BrowserType.CHROME)){
       driver = new ChromeDriver();
       System.setProperty("webdriver.chrome.driver", "D:/GitProject/JavaLessons/chromedriver.exe");
     }
-    else if(browser == BrowserType.FIREFOX){
+    else if(browser.equals(BrowserType.FIREFOX)){
       driver = new FirefoxDriver();
       System.setProperty("webdriver.gecko.driver", "D:/GitProject/JavaLessons/geckodriver.exe");
     }
-    else if(browser == BrowserType.IE){
+    else if(browser.equals(BrowserType.IE)){
       driver = new InternetExplorerDriver();
       System.setProperty("webdriver.ie.driver", "D:/GitProject/JavaLessons/IEDriverServer.exe");
     }

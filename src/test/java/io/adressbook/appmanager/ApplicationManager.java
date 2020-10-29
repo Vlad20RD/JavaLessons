@@ -1,6 +1,10 @@
 package io.adressbook.appmanager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.BrowserType;
+
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
@@ -9,11 +13,28 @@ public class ApplicationManager {
   private GroupHelper groupHelper;
   private NavigationHelper navigationHelper;
   private SessionHelper sessionHelper;
+  String browser;
+
+  public ApplicationManager(String browser) {
+    this.browser = browser;
+  }
 
   public void init() {
-    driver = new ChromeDriver();
 
-    System.setProperty("webdriver.chrome.driver", "D:/GitProject/Java_lessons/chromedriver.exe");
+    if(browser == BrowserType.CHROME){
+      driver = new ChromeDriver();
+      System.setProperty("webdriver.chrome.driver", "D:/GitProject/JavaLessons/chromedriver.exe");
+    }
+    else if(browser == BrowserType.FIREFOX){
+      driver = new FirefoxDriver();
+      System.setProperty("webdriver.gecko.driver", "D:/GitProject/JavaLessons/geckodriver.exe");
+    }
+    else if(browser == BrowserType.IE){
+      driver = new InternetExplorerDriver();
+      System.setProperty("webdriver.ie.driver", "D:/GitProject/JavaLessons/IEDriverServer.exe");
+    }
+
+
     driver.manage().window().maximize();
     driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 

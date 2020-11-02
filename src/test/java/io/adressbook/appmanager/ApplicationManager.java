@@ -11,6 +11,7 @@ public class ApplicationManager {
   public WebDriver driver;
 
   private GroupHelper groupHelper;
+  private ContactHelper contactHelper;
   private NavigationHelper navigationHelper;
   private SessionHelper sessionHelper;
   String browser;
@@ -34,12 +35,12 @@ public class ApplicationManager {
       System.setProperty("webdriver.ie.driver", "D:/GitProject/JavaLessons/IEDriverServer.exe");
     }
 
-
     driver.manage().window().maximize();
-    driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+    driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
 
     driver.get("http://addressbook/");
     groupHelper = new GroupHelper(driver);
+    contactHelper = new ContactHelper(driver);
     navigationHelper = new NavigationHelper(driver);
     sessionHelper = new SessionHelper(driver);
     sessionHelper.login("admin", "secret");
@@ -51,6 +52,10 @@ public class ApplicationManager {
 
   public GroupHelper getGroupHelper() {
     return groupHelper;
+  }
+
+  public ContactHelper getContactHelper() {
+    return contactHelper;
   }
 
   public NavigationHelper getNavigationHelper() {

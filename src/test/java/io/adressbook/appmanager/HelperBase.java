@@ -14,11 +14,11 @@ public class HelperBase {
     this.driver = driver;
   }
 
-  protected void click(By locator) {
+  public void click(By locator) {
     driver.findElement(locator).click();
   }
 
-  protected void type(By locator, String text) {
+  public void type(By locator, String text) {
     if(text != null){
       String existingsText = driver.findElement(locator).getAttribute("value");
       if(!text.equals(existingsText)){
@@ -28,7 +28,7 @@ public class HelperBase {
     }
   }
 
-  protected boolean isElementPresent(By locator) {
+  public boolean isElementPresent(By locator) {
     try{
       driver.findElement(locator);
       return true;

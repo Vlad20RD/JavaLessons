@@ -52,4 +52,16 @@ public class GroupHelper extends HelperBase{
   public void selectGroup() {
     click(By.xpath("//input[@type='checkbox'][last()]"));
   }
+
+  //кусок кода, где непосредвственно выполняется создание группы
+  public void createGroup(GroupData group) {
+      initGroupCreation();
+      fillGroupForm(group);
+      submitGroupCreation();
+      returnToGroupPage();
+  }
+
+  public boolean isThereAGroup() {
+    return isElementPresent(By.xpath("//input[@type='checkbox'][last()]"));
+  }
 }

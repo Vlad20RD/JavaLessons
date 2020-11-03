@@ -64,4 +64,8 @@ public class GroupHelper extends HelperBase{
   public boolean isThereAGroup() {
     return isElementPresent(By.xpath("//input[@type='checkbox'][last()]"));
   }
+
+  public int getGroupCount() {
+    return driver.findElements(By.xpath("//input[@type='checkbox']")).size();
+  }
 }

@@ -34,7 +34,7 @@ public class GroupHelper extends HelperBase{
   }
 
   //кнопка - удалить группу
-  public void deleteSelectedGroups() {
+  public void submitDeleteSelectedGroups() {
     click(By.xpath("//input[@value='Удалить группу (ы)'][1]"));
   }
 
@@ -48,9 +48,9 @@ public class GroupHelper extends HelperBase{
     click(By.xpath("  //input[@value='Обновить']"));
   }
 
-  //выбрать последнюю группу
-  public void selectGroup() {
-    click(By.xpath("//input[@type='checkbox'][last()]"));
+  //выбрать группу
+  public void selectGroup(int index) {
+    driver.findElements(By.xpath("//input[@type='checkbox']")).get(index).click();
   }
 
   //кусок кода, где непосредвственно выполняется создание группы
